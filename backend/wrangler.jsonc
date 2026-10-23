@@ -16,8 +16,7 @@
     {
       "binding": "DB",
       "database_name": "harvest-tracker",
-      // Fill in after: npx wrangler d1 create harvest-tracker
-      "database_id": "REPLACE_ME",
+      "database_id": "18b22f92-dcf5-46b6-8231-bc7179084379",
       "migrations_dir": "migrations"
     }
   ],
