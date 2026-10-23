@@ -116,10 +116,12 @@ Confirmed (scaffolded):
 - Database: Cloudflare D1, plain numbered `.sql` migrations, no ORM.
 - Ingest: Python package (`ingest/`) run by GitHub Actions, writing to D1 via the
   D1 REST API.
-- Sunrise/sunset: `astral`, computed locally.
-- Tooling: npm (frontend, Wrangler), uv (Python 3.13+).
-- Tests: pytest for Python logic. Test setup to mirror the johnsblog repo, added
-  with `/tests` before Feature 1.
+- Sunrise/sunset: `astral`, computed locally in the Worker and served by the API
+  (the frontend never computes sun times itself).
+- Tooling: npm (frontend, Wrangler), uv (Python 3.14, pinned in `.python-version`
+  to match the Workers Pyodide runtime).
+- Tests: Vitest (frontend), pytest (backend, ingest). `./scripts/verify.sh` runs
+  typecheck, tests, and build; GitHub runs it on every pull request.
 
 Architecture rules:
 - Frontend only calls this project's `/api/*`.
@@ -157,6 +159,8 @@ exceeds the free 10 ms limit.
 - Accessibility and performance: honor `prefers-reduced-motion`, pause when the tab
   is hidden, cap particles, scenes are `aria-hidden` and decorative.
 - Laptop first, responsive to phone.
+- TODO: frontend route paths (home, crop page, scene list) are undecided. Decide
+  when Feature 1 starts.
 
 ## 8. Deployment - Where and how will this ship?
 
