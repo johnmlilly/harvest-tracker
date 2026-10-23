@@ -3,11 +3,11 @@
 Family learning site tracking Iowa harvest seasons. See [PLAN.md](PLAN.md).
 
 ## Layout
-- `frontend/` — Vite + React + TypeScript (served as Workers static assets)
-- `backend/` — FastAPI on a Cloudflare Python Worker, D1 migrations in `backend/migrations/`
-- `ingest/` — scheduled ingest scripts (GitHub Actions → D1 REST API)
-- `data/seed/` — baseline CSVs
-- `docs/reference/` — design references
+- `frontend/` - Vite + React + TypeScript (served as Workers static assets)
+- `backend/` - FastAPI on a Cloudflare Python Worker, D1 migrations in `backend/migrations/`
+- `ingest/` - scheduled ingest scripts (GitHub Actions → D1 REST API)
+- `data/seed/` - baseline CSVs
+- `docs/reference/` - design references
 
 ## Prereqs
 Node 24+, [uv](https://docs.astral.sh/uv/).

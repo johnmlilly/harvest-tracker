@@ -22,3 +22,9 @@ python_modules/
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# Logs / test output
+*.log
+coverage/
+htmlcov/
+.coverage
