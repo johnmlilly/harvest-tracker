@@ -6,6 +6,9 @@ on:
   # schedule:
   #   - cron: "17 13 * * 2,3"
 
+permissions:
+  contents: read
+
 concurrency:
   group: ingest
   cancel-in-progress: false
@@ -17,9 +20,11 @@ jobs:
       run:
         working-directory: ingest
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - run: uv sync --locked
       - run: uv run python -m harvest_ingest
         env:
           NASS_API_KEY: ${{ secrets.NASS_API_KEY }}

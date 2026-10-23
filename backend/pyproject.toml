@@ -13,7 +13,7 @@ dev = [
     "workers-py",
     "workers-runtime-sdk",
     "pytest",
-    "httpx",
+    "httpx2>=2.16.0",
 ]
 
 [tool.pytest.ini_options]

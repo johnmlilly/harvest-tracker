@@ -346,9 +346,15 @@ Ingest (`ingest/`, uv):
 - Run: `uv run python -m harvest_ingest`
 - Test: `uv run pytest`
 
+Whole project (repo root):
+
+- Verify: `./scripts/verify.sh` (frontend `npm run verify` = `tsc -b`, `vitest run`,
+  `vite build`; then backend and ingest `uv run --locked pytest`). GitHub runs the
+  same script in `.github/workflows/verify.yml`.
+
 Test gate: all three test commands (frontend `npm test`, backend and ingest
-`uv run pytest`) are configured. Run the suite for each part a change touches. No
-combined Verify command exists yet; the frontend build (`tsc -b`) is the only typecheck.
+`uv run pytest`) are configured, and Verify runs them all. Frontend `npm run verify`
+also exists on its own.
 
 Browser testing is opt-in. Run `/tests browser` or `$tests browser` to add
 or normalize a browser harness and document its exact command as `Browser

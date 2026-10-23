@@ -17,7 +17,8 @@
 ## Package Managers
 
 - Frontend: npm (`frontend/package-lock.json`)
-- Python (backend, ingest): uv (`uv.lock`); Python 3.13+
+- Python (backend, ingest): uv (`uv.lock`); Python 3.14, pinned per part in
+  `.python-version` to match the Workers Pyodide runtime
 - Wrangler is an npm dev dependency of `backend/`; Python Worker commands go
   through `uv run pywrangler`
 
