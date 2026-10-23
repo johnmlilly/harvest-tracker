@@ -1,0 +1,16 @@
+[project]
+name = "harvest-ingest"
+version = "0.1.0"
+description = "Scheduled ingest jobs (run by GitHub Actions) that write to D1 over the REST API"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

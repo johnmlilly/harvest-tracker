@@ -1,0 +1,28 @@
+name: ingest
+
+on:
+  workflow_dispatch:
+  # Enable once Phase 0 source checks pass (Tue/Wed mornings UTC; Wed is the retry).
+  # schedule:
+  #   - cron: "17 13 * * 2,3"
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ingest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run python -m harvest_ingest
+        env:
+          NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}

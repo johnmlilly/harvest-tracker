@@ -1,0 +1,21 @@
+[project]
+name = "harvest-api"
+version = "0.1.0"
+description = "Read-only API for the Harvest Season Tracker (FastAPI on a Cloudflare Python Worker)"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi",
+    "astral",
+]
+
+[dependency-groups]
+dev = [
+    "workers-py",
+    "workers-runtime-sdk",
+    "pytest",
+    "httpx",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

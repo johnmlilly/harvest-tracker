@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "harvest-tracker",
+  "main": "src/main.py",
+  "compatibility_date": "2026-10-22",
+  "compatibility_flags": ["python_workers"],
+
+  // Frontend build served as static assets; only /api/* hits the Python Worker.
+  "assets": {
+    "directory": "../frontend/dist",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "harvest-tracker",
+      // Fill in after: npx wrangler d1 create harvest-tracker
+      "database_id": "REPLACE_ME",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "vars": {
+    "NWS_USER_AGENT": "harvest-tracker (family learning site; contact: REPLACE_ME)"
+  }
+}

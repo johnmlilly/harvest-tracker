@@ -1,0 +1,13 @@
+{
+  "name": "harvest-backend",
+  "private": true,
+  "scripts": {
+    "dev": "uv run pywrangler dev",
+    "deploy": "npm --prefix ../frontend run build && uv run pywrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply harvest-tracker --local",
+    "migrate:remote": "wrangler d1 migrations apply harvest-tracker --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.152.0"
+  }
+}
