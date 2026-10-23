@@ -4,7 +4,7 @@ Features in rough build order. Details come later in `/feature`.
 
 ## Milestone 1: Live harvest slice
 
-- [ ] 1. **Ingest foundation** - D1 REST client, `ingest_run` logging, `raw_payload` storage; one real Quick Stats response saved from a GitHub Actions run
+- [x] 1. **Ingest foundation** - D1 REST client, `ingest_run` logging, `raw_payload` storage; one real Quick Stats response saved from a GitHub Actions run
   - TODO: get a NASS Quick Stats API key (until then, build against a saved sample response)
   - TODO: confirm D1 REST write limits and batch size
   - TODO: fill `database_id` in `backend/wrangler.jsonc`
