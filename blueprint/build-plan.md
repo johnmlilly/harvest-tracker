@@ -9,11 +9,11 @@ Features in rough build order. Details come later in `/feature`.
   - TODO: confirm D1 REST write limits and batch size
   - TODO: fill `database_id` in `backend/wrangler.jsonc`
   - TODO: decide frontend route paths (home, crop page, scene list) before Feature 4
+- [ ] 4. **App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page
+- [ ] 5. **Fall scene** - combine driven by percent harvested, leaves, geese, harvest moon, animated fall logo/loader, reduced-motion fallback
 - [ ] 2. **Crop progress ingest** - Iowa corn and soybean weekly progress with multi-year backfill and idempotent upserts
   - TODO: confirm Quick Stats query parameters for Iowa corn and soybean progress
 - [ ] 3. **Progress API** - `/api/crops`, `/api/crops/{slug}/progress` with last-year and 5-year-average comparison, `/api/health` with last ingest
-- [ ] 4. **App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page
-- [ ] 5. **Fall scene** - combine driven by percent harvested, leaves, geese, harvest moon, animated fall logo/loader, reduced-motion fallback
 - [ ] 6. **Day and night sky** - day, dusk, night palettes from Des Moines sunrise and sunset computed with `astral` and served by the API
 - [ ] 7. **Home fact cards and crop pages** - kid-friendly picture cards and a per-crop progress chart vs last year and average
 - [ ] 8. **Go live** - deploy to Cloudflare, enable the weekly schedule, "last updated" and stale-data banner
