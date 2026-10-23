@@ -329,6 +329,8 @@ Frontend (`frontend/`, npm, Vite + React + TypeScript):
 - Build: `npm run build` (runs `tsc -b`, then `vite build` to `frontend/dist`)
 - Preview: `npm run preview`
 - Lint: `npm run lint` (oxlint)
+- Test: `npm test` (Vitest, `src/**/*.test.ts`)
+- Test watch: `npm run test:watch`
 
 Backend (`backend/`, uv for Python, npm for Wrangler; Python Worker + D1):
 
@@ -342,16 +344,13 @@ Ingest (`ingest/`, uv):
 
 - Install: `uv sync`
 - Run: `uv run python -m harvest_ingest`
-- Test: `uv run pytest` (no tests yet; pytest exits non-zero when none are collected)
+- Test: `uv run pytest`
 
-No typecheck or verify command beyond the frontend build exists yet. The backend
-`pytest` command is the only configured test gate; no frontend test runner is set up.
+Test gate: all three test commands (frontend `npm test`, backend and ingest
+`uv run pytest`) are configured. Run the suite for each part a change touches. No
+combined Verify command exists yet; the frontend build (`tsc -b`) is the only typecheck.
 
-Testing is opt-in. If this project does not already have a unit test runner, run
-`/tests` or `$tests` to add one and update this section with the real test
-commands.
-
-Browser testing is also opt-in. Run `/tests browser` or `$tests browser` to add
+Browser testing is opt-in. Run `/tests browser` or `$tests browser` to add
 or normalize a browser harness and document its exact command as `Browser
 tests`. Check and Continuous Mode can then reuse it without installing tooling
 mid-feature.

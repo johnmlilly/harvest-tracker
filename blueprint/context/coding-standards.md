@@ -136,9 +136,9 @@ of the switch; the skills and `ai-interaction.md` only point back here.
 
 Stack binding: Python logic (API services, ingest parsers, GDD and season math)
 uses pytest under each package's `tests/` directory, with network calls stubbed.
-Python tests live in `tests/` rather than next to source. No frontend runner is
-configured yet; if one is added for TypeScript logic, use Vitest with
-`vi.useFakeTimers()` for time-dependent code.
+Python tests live in `tests/` rather than next to source. Frontend TypeScript logic
+(season resolver, percent and date math) uses Vitest, with `vi.useFakeTimers()` for
+time-dependent code. Scenes and components are verified visually, not unit tested.
 
 ## Browser Verification
 
