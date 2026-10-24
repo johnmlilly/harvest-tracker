@@ -1,6 +1,6 @@
 # Harvest Season Tracker - Project Overview
 
-<!-- blueprint:source-hash 17d69af8f1d6299e268fde89f473f0626be72e09088ffa661bdd60c757e8e567 -->
+<!-- blueprint:source-hash 59b3e2e1df766a25c4b1f665f6a5c5b34a33b437127082997caff774333b1ea0 -->
 
 > Homeschool learning site for kids 6 to 10 that shows Iowa's harvest live, in pictures: animated season scenes driven by real USDA, NOAA, and NWS data.
 
@@ -25,39 +25,39 @@ Success: the kids ask to "check the harvest" and can say what changed since last
 
 ## Features
 
-Build-plan order. Milestone 1 (Features 1 to 8) is the headline: a thin live slice shipped while harvest is still happening (USDA weekly reports stop in late November).
+Build-plan order (IDs are stable, so the list is not numeric). Milestone 1 is the headline: a thin live slice shipped while harvest is still happening (USDA weekly reports stop in late November). Features 4 and 5 come before 2 and 3 so the Fall scene is visible early, driven by the `?progress=` override until real data arrives.
 
 **Milestone 1: Live harvest slice**
-1. **Ingest foundation** - D1 REST client, `ingest_run` logging, `raw_payload` storage; done when a real Quick Stats response is saved from a GitHub Actions run.
-2. **Crop progress ingest** - Iowa corn and soybean weekly progress, multi-year backfill, idempotent upserts.
-3. **Progress API** - `/api/crops`, `/api/crops/{slug}/progress` (with last-year and 5-year-average comparison), `/api/health` (last successful ingest per source).
-4. **App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page.
-5. **Fall scene** - combine position = percent harvested; leaves, geese, harvest moon; animated fall logo/loader; reduced-motion fallback.
-6. **Day and night sky** - day, dusk, night palettes from Des Moines sunrise/sunset computed with `astral` and served by the API.
-7. **Home fact cards and crop pages** - kid-friendly picture cards; per-crop chart vs last year and average.
-8. **Go live** - deploy to Cloudflare, enable weekly schedule, "last updated" and stale-data banner.
+- **1. Ingest foundation** - D1 REST client, `ingest_run` logging, `raw_payload` storage; done when a real Quick Stats response is saved from a GitHub Actions run.
+- **4. App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page.
+- **5. Fall scene** - combine position = percent harvested; leaves, geese, harvest moon; animated fall logo/loader; reduced-motion fallback.
+- **2. Crop progress ingest** - Iowa corn and soybean weekly progress, multi-year backfill, idempotent upserts.
+- **3. Progress API** - `/api/crops`, `/api/crops/{slug}/progress` (with last-year and 5-year-average comparison), `/api/health` (last successful ingest per source).
+- **6. Day and night sky** - day, dusk, night palettes from Des Moines sunrise/sunset computed with `astral` and served by the API.
+- **7. Home fact cards and crop pages** - kid-friendly picture cards; per-crop chart vs last year and average.
+- **8. Go live** - deploy to Cloudflare, enable weekly schedule, "last updated" and stale-data banner.
 
 **Milestone 2: Replay and winter**
-9. **Harvest replay** - week-by-week slider animating a season from stored history.
-10. **Winter scene** - snowfall, field under stars, glowing grain bin, countdown to spring planting.
+- **9. Harvest replay** - week-by-week slider animating a season from stored history.
+- **10. Winter scene** - snowfall, field under stars, glowing grain bin, countdown to spring planting.
 
 **Milestone 3: Baseline calendar**
-11. **Baseline data** - seed crops, stages, usual plant/harvest dates for all three crops.
-12. **Season calendar** - begin, peak, end per crop, no live APIs.
+- **11. Baseline data** - seed crops, stages, usual plant/harvest dates for all three crops.
+- **12. Season calendar** - begin, peak, end per crop, no live APIs.
 
 **Milestone 4: Weather layer**
-13. **Frost** - NCEI frost normals, first-frost countdown, frost sparkle.
-14. **Heat accumulation** - daily temps ingest, GDD per crop, GDD-driven corn height.
-15. **Live forecast** - NWS forecast in the Worker, cached; rain/snow overlay.
+- **13. Frost** - NCEI frost normals, first-frost countdown, frost sparkle.
+- **14. Heat accumulation** - daily temps ingest, GDD per crop, GDD-driven corn height.
+- **15. Live forecast** - NWS forecast in the Worker, cached; rain/snow overlay.
 
 **Milestone 5: More seasons and explainers**
-16. **Spring scene** - tractor planting, seedlings, rain, returning birds.
-17. **Summer scene** - growing corn, fireflies after sunset, heat shimmer, flowering beans.
-18. **Milestone events** - 50% harvested, last field done, first frost, solstice.
-19. **Explainer visuals** - sun arc with day-length slider, harvest race bars, kernel black-layer cutaway, season wheel.
+- **16. Spring scene** - tractor planting, seedlings, rain, returning birds.
+- **17. Summer scene** - growing corn, fireflies after sunset, heat shimmer, flowering beans.
+- **18. Milestone events** - 50% harvested, last field done, first frost, solstice.
+- **19. Explainer visuals** - sun arc with day-length slider, harvest race bars, kernel black-layer cutaway, season wheel.
 
 **Milestone 6: Polish**
-20. **Polish** - attribution footer, mobile layout pass, accessibility and performance check.
+- **20. Polish** - attribution footer, mobile layout pass, accessibility and performance check.
 
 Later, not v1: Virginia home layer; lessons, quizzes, glossary, journal, safety module, other states.
 
@@ -160,7 +160,8 @@ None. Family homeschool project; stay in free tiers. Revisit Workers Paid only i
 
 > Tracked as TODOs on the build-plan feature that needs them. Resolve in the plans, then re-run `/overview`.
 
-- Feature 1: NASS Quick Stats API key (build against a saved sample until it arrives), D1 REST write limits and batch size, `database_id` in `backend/wrangler.jsonc`, frontend route paths (before Feature 4).
+- Feature 1 (done) still lists TODOs for NASS key, D1 write limits, and `database_id`. All three are resolved (see `blueprint/history/features/01-ingest-foundation.md`); the notes can be removed from the plan.
+- Feature 4 (next): frontend route paths (home, crop page, scene list) are undecided; the TODO sits under Feature 1 in the plan.
 - Feature 2: Quick Stats query parameters for Iowa corn and soybean progress.
 - Feature 8: Python Worker CPU time vs the free 10 ms limit, GitHub pausing scheduled workflows, domain.
 - Feature 11: snap bean baseline source.
