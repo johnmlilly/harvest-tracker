@@ -1,0 +1,230 @@
+/* Shared mockup layout and components. Every value comes from theme.css. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--on-wood);
+  font: var(--text-md) / 1.5 var(--font-body);
+  /* season color with a soft paper texture and a gentle vignette */
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(255 255 255 / 0.12), transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgb(0 0 0 / 0.25), transparent 70%),
+    repeating-radial-gradient(circle at 30% 40%, rgb(255 255 255 / 0.025) 0 1px, transparent 1px 3px),
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+  transition: background-color 0.6s ease;
+}
+
+.page { max-width: 1040px; margin: 0 auto; padding: var(--space-2); }
+
+h1, h2, .display { font-family: var(--font-display); font-weight: 400; }
+h1 { font-size: var(--text-xl); line-height: 1.2; margin: var(--space-3) 0 var(--space-2); text-align: center; text-shadow: 0 2px 0 rgb(0 0 0 / 0.5); }
+
+/* Wooden plank header with brass nails */
+.plank {
+  position: relative;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-1) var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 12px 50%, var(--brass-light) 0 3px, var(--brass-dark) 4px, transparent 5px),
+    radial-gradient(circle at calc(100% - 12px) 50%, var(--brass-light) 0 3px, var(--brass-dark) 4px, transparent 5px),
+    repeating-linear-gradient(0deg, transparent 0 7px, rgb(0 0 0 / 0.1) 7px 8px, transparent 8px 19px),
+    linear-gradient(var(--wood-light), var(--wood) 45%, var(--wood-dark));
+  box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.15);
+}
+.brand { display: flex; align-items: center; gap: var(--space-1); color: var(--on-wood); text-decoration: none; font-family: var(--font-display); font-size: var(--text-lg); text-shadow: 0 2px 0 rgb(0 0 0 / 0.55); }
+.brand svg { width: 40px; height: 40px; }
+.nav { display: flex; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+
+/* Brass plate buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--tap); padding: 0 var(--space-2);
+  font-family: var(--font-display); font-size: var(--text-sm); letter-spacing: 0.04em;
+  color: var(--accent-ink); text-decoration: none;
+  background: linear-gradient(var(--brass-light), var(--brass) 55%, var(--brass-dark));
+  border: 1px solid var(--brass-dark); border-radius: var(--radius);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5), 0 2px 0 rgb(0 0 0 / 0.4);
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:active, .btn[aria-current='page'], .btn[aria-pressed='true'] {
+  background: linear-gradient(var(--brass-dark), var(--brass));
+  color: var(--on-wood);
+  box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.45);
+}
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Parchment card */
+.card {
+  color: var(--ink);
+  background: radial-gradient(ellipse at 50% 40%, var(--paper) 55%, var(--paper-edge) 100%);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+}
+.card__title {
+  margin: 0 0 var(--space-2);
+  padding-bottom: 6px;
+  font-family: var(--font-display); font-size: var(--text-md); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 3px double var(--paper-line);
+}
+
+/* Scene in a wooden frame with a brass plaque */
+.scene-frame {
+  position: relative;
+  margin-top: var(--space-3);
+  padding: 12px;
+  border-radius: var(--radius);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 9px, rgb(0 0 0 / 0.1) 9px 10px, transparent 10px 23px),
+    linear-gradient(var(--wood-light), var(--wood-dark));
+  box-shadow: var(--shadow);
+}
+.plaque {
+  position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%);
+  padding: 4px var(--space-2);
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--accent-ink); white-space: nowrap;
+  background: linear-gradient(var(--brass-light), var(--brass) 60%, var(--brass-dark));
+  border: 1px solid var(--brass-dark); border-radius: 3px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.5);
+}
+svg.scene {
+  display: block; width: 100%; height: auto;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.4);
+  background:
+    radial-gradient(circle at var(--sun-x) var(--sun-y), var(--glow) 0, transparent var(--glow-r)),
+    linear-gradient(var(--sky-top), var(--sky-mid) 40%, var(--sky-horizon) 62%);
+}
+
+.only-day, .only-dusk, .only-night, .not-night { display: none; }
+.scene[data-time='day'] .only-day,
+.scene[data-time='dusk'] .only-dusk,
+.scene[data-time='night'] .only-night,
+.scene:not([data-time='night']) .not-night { display: inline; }
+.scene[data-time='dusk'] .land { filter: url(#light-dusk); }
+.scene[data-time='night'] .land { filter: url(#light-night); }
+.scene[data-time='dusk'] .clouds { filter: url(#light-dusk); opacity: 0.85; }
+
+/* Smooth, gentle motion */
+.spin { animation: spin 2.4s linear infinite; }
+/* Combine works in place at the corn edge: creeps, rocks, cuts stalks, fills its tank.
+   A grain cart comes by on a 36s cycle: arrives, takes the grain, drives off. */
+.creep { animation: creep 3.2s ease-in-out infinite alternate; }
+.rock { transform-box: view-box; animation: rock 2.2s ease-in-out infinite alternate; }
+.cut { transform-box: fill-box; transform-origin: 50% 100%; animation: cut 3s ease-in infinite; }
+.cut:nth-child(2) { animation-delay: -0.75s; }
+.cut:nth-child(3) { animation-delay: -1.5s; }
+.cut:nth-child(4) { animation-delay: -2.25s; }
+.grain, .cart-load { transform-box: fill-box; transform-origin: 50% 100%; }
+.grain { animation: grain 36s linear infinite; }
+.cart-load { animation: cart-load 36s linear infinite; }
+.cart-run { animation: cart-run 36s infinite; }
+.unload { animation: unload 36s linear infinite; }
+.stream { animation: stream 0.6s linear infinite; }
+.stream:nth-child(2) { animation-delay: -0.2s; }
+.stream:nth-child(3) { animation-delay: -0.4s; }
+.chaff { transform-box: fill-box; transform-origin: center; animation: chaff 1.8s ease-out infinite; }
+.chaff:nth-child(2) { animation-delay: -0.6s; }
+.chaff:nth-child(3) { animation-delay: -1.2s; }
+/* Spring tractor: one long pass, exits left, re-enters right (no visible turn) */
+.pass { animation: pass 26s linear infinite; }
+.roll { animation: roll 1.2s ease-in-out infinite alternate; }
+.puff, .dust { transform-box: fill-box; transform-origin: center; }
+.puff { animation: puff 3s ease-out infinite; }
+.wave { animation: wave 1.6s ease-in-out infinite alternate; }
+.flap { animation: flap 0.5s ease-in-out infinite alternate; }
+.geese { animation: geese 45s linear infinite; }
+.glide { animation: glide 60s ease-in-out infinite alternate; }
+.twinkle { animation: twinkle 3s ease-in-out infinite alternate; }
+.twinkle:nth-child(3n) { animation-delay: -1s; }
+.twinkle:nth-child(3n + 1) { animation-delay: -2s; }
+.fall-leaf { animation: leaf 9s linear infinite; }
+.fall-leaf:nth-child(2) { animation-duration: 11s; animation-delay: -4s; }
+.fall-leaf:nth-child(3) { animation-duration: 10s; animation-delay: -7s; }
+.fall-leaf:nth-child(4) { animation-duration: 12s; animation-delay: -2s; }
+.snow { animation: snow 12s linear infinite; }
+.snow:nth-child(2n) { animation-duration: 15s; animation-delay: -5s; }
+.snow:nth-child(3n) { animation-duration: 10s; animation-delay: -8s; }
+.dust { animation: dust 2.4s ease-out infinite; }
+.dust:nth-child(2) { animation-delay: -0.8s; }
+.dust:nth-child(3) { animation-delay: -1.6s; }
+
+@keyframes spin { to { transform: rotate(-360deg); } }
+@keyframes creep { from { transform: translateX(0); } to { transform: translateX(-6px); } }
+@keyframes rock { from { transform: rotate(-0.4deg); } to { transform: rotate(0.35deg); } }
+@keyframes cut {
+  0%, 55% { transform: rotate(0) translateY(0); opacity: 1; }
+  75% { transform: rotate(30deg) translateY(8px); opacity: 1; }
+  88% { transform: rotate(55deg) translateY(30px); opacity: 0; }
+  89% { transform: rotate(0) translateY(0); opacity: 0; }
+  100% { transform: rotate(0) translateY(0); opacity: 1; }
+}
+@keyframes grain { 0% { transform: scaleY(0.6); } 42%, 45% { transform: scaleY(1); } 67%, 70% { transform: scaleY(0.15); } 100% { transform: scaleY(0.6); } }
+@keyframes cart-load { 0%, 45% { transform: scaleY(0.05); } 67%, 100% { transform: scaleY(1); } }
+@keyframes cart-run {
+  0%, 25% { transform: translateX(1250px); animation-timing-function: ease-out; }
+  40%, 70% { transform: translateX(0); animation-timing-function: ease-in; }
+  100% { transform: translateX(-1750px); }
+}
+@keyframes unload { 0%, 42% { opacity: 0; } 45%, 67% { opacity: 1; } 70%, 100% { opacity: 0; } }
+@keyframes stream { from { transform: translateY(0); opacity: 1; } to { transform: translateY(70px); opacity: 0.4; } }
+@keyframes chaff { from { transform: translate(0, 0) rotate(0); opacity: 0.9; } to { transform: translate(70px, -10px) rotate(200deg); opacity: 0; } }
+@keyframes pass { from { transform: translateX(800px); } to { transform: translateX(-1300px); } }
+@keyframes roll { to { transform: translateY(-2px); } }
+@keyframes puff { from { transform: translate(0, 0) scale(0.6); opacity: 0.7; } to { transform: translate(30px, -70px) scale(2.2); opacity: 0; } }
+@keyframes wave { from { transform: rotate(-12deg); } to { transform: rotate(18deg); } }
+@keyframes flap { to { transform: scaleY(-0.75); } }
+@keyframes geese { from { transform: translateX(700px); } to { transform: translateX(-1300px); } }
+@keyframes glide { to { transform: translateX(160px); } }
+@keyframes twinkle { to { opacity: 0.35; } }
+@keyframes leaf { from { transform: translate(0, 0) rotate(0); } to { transform: translate(-160px, 520px) rotate(540deg); } }
+@keyframes snow { from { transform: translate(0, -40px); } to { transform: translate(-60px, 940px); } }
+@keyframes dust { from { transform: translate(0, 0) scale(0.5); opacity: 0.6; } to { transform: translate(90px, -30px) scale(2); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .scene *, .brand * { animation: none !important; }
+}
+
+/* Preview controls (dev overrides) */
+.controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-1); margin-top: var(--space-4); }
+.controls--tight { margin-top: var(--space-2); }
+.controls .display { font-size: var(--text-sm); margin-right: var(--space-1); }
+
+/* Fact cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--space-3); margin-top: var(--space-2); }
+.fact { display: grid; grid-template-columns: 64px 1fr; gap: var(--space-1) var(--space-2); align-content: start; }
+.fact .card__title, .fact__bar { grid-column: 1 / -1; }
+.fact__icon { width: 64px; height: 64px; }
+.fact__big { font-size: var(--text-lg); font-weight: 700; line-height: 1.2; margin: 0; }
+.fact__note { margin: 4px 0 0; color: var(--ink-soft); }
+.fact__note--good { color: var(--good); font-weight: 700; }
+
+.bar { position: relative; height: 22px; margin-top: var(--space-1); border-radius: 11px; background: var(--bar-track); box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.25), 0 0 0 2px var(--brass); }
+.bar__fill { height: 100%; border-radius: 11px; background: linear-gradient(var(--bar-fill), var(--bar-fill-dark)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4); }
+.bar__mark { position: absolute; top: -6px; bottom: -6px; width: 3px; margin-left: -1px; background: var(--bar-marker); border-radius: 2px; }
+.bar__legend { margin-top: 6px; font-size: var(--text-sm); color: var(--ink-soft); }
+
+.status {
+  margin: var(--space-3) auto 0; max-width: 640px; padding: var(--space-1) var(--space-2);
+  text-align: center; font-size: var(--text-sm); color: var(--ink-soft);
+  background: var(--paper); border: 1px solid var(--paper-line); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
+/* Scene list */
+.scene-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.scene-card { display: block; padding: var(--space-1) var(--space-1) var(--space-2); color: var(--ink); text-decoration: none; }
+.scene-card:hover { outline: 3px solid var(--brass-light); }
+.scene-card .card__title { display: flex; justify-content: space-between; align-items: baseline; margin: var(--space-1) var(--space-1) var(--space-1); }
+.scene-card__months { font-family: var(--font-body); font-size: var(--text-sm); color: var(--ink-soft); text-transform: none; letter-spacing: 0; }
+.scene-card svg.scene { border-radius: 2px; }
+.scene-card__meta { padding: var(--space-1) var(--space-1) 0; }
+.tag { display: inline-block; padding: 2px 10px; font-size: var(--text-sm); font-weight: 700; border-radius: 999px; }
+.tag--own { color: var(--on-wood); background: var(--good); }
+.tag--default { color: var(--ink-soft); background: var(--paper-edge); }

@@ -145,22 +145,37 @@ exceeds the free 10 ms limit.
 
 ## 7. UI/UX - How should this look and feel?
 
-- The UI is the main attraction. Each season has its own small animated scene that
+- The UI is the main attraction. Each season has its own animated scene that
   changes the look of the whole site.
-- Reference feel: the small, charming idle loop of the Claude Code animated icon.
-  Store a screenshot or GIF in `docs/reference/` when available.
+- Look: a frontier journal inspired by 1990s Oregon Trail (inspired by, never
+  copied): parchment cards on a muted season-colored page (sage spring, wheat
+  summer, rust fall, slate winter), a wooden plank header, brass buttons, ink-brown
+  text. Fonts: Rye (western slab) for titles, labels, and buttons; Atkinson
+  Hyperlegible for anything kids read. Fonts are self-hosted.
+- Scenes: layered vector illustration, smooth and not pixelated. Gradient sky with
+  a sun glow, hazy far hills, a detailed tree line, field rows in perspective, soft
+  shadows. Figures are detailed but friendly; machines are green and yellow with no
+  brand marks.
+- Time of day relights the whole scene (day, dusk, night) through shared light
+  settings; barn windows and machine lights glow at night.
+- Motion is smooth and gentle. Machines work in place rather than shuttling: the
+  combine works the corn edge (stalks fall into the header, tank fills), and a
+  grain cart tractor pulls alongside, unloads, and drives off. Turns happen
+  off-screen; no visible flips.
+- Design reference: `prototypes/` (`theme.css`, `home.html`, `scenes.html`,
+  `art.js`) until Feature 4 ports the theme and art into the app.
+- Routes: `/` home, `/crops/:slug` crop page (Feature 7), `/scenes` scene list,
+  linked in the navigation. URL overrides work on every page.
 - Home: big scene, then 2 to 3 picture fact cards. Crop pages for deeper views.
   Minimal navigation.
 - Kid-first copy: short sentences, friendly words ("picked" alongside "harvested").
-- Starter scene ideas and data bindings as listed in `PLAN.md` (combine = percent
-  harvested, corn height = GDD, sky = sunrise/sunset, weather overlays = forecast,
-  frost sparkle = frost data).
+- Starter scene ideas and data bindings as listed in `PLAN.md` (corn edge =
+  percent harvested, corn height = GDD, sky = sunrise/sunset, weather overlays =
+  forecast, frost sparkle = frost data).
 - A few tappable elements (birds fly off, tractor wiggles). No audio by default.
 - Accessibility and performance: honor `prefers-reduced-motion`, pause when the tab
   is hidden, cap particles, scenes are `aria-hidden` and decorative.
 - Laptop first, responsive to phone.
-- TODO: frontend route paths (home, crop page, scene list) are undecided. Decide
-  when Feature 1 starts.
 
 ## 8. Deployment - Where and how will this ship?
 

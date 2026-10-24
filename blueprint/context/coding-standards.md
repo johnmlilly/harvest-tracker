@@ -36,14 +36,17 @@
   pause when the tab is hidden, cap particle counts
 - Season themes live in `frontend/src/seasons/<name>/` and register through a
   theme registry; core app code must not know season details
-  > TODO: confirm registry shape when the first scene is built
+  (`SeasonTheme` in `seasons/types.ts`: `id`, `label`, `palette`, `Scene`; register in
+  `seasons/registry.ts`). Scenes compose shared parts from `frontend/src/scenes/`
+  inside `SceneFrame`; port new drawings as JSX parts there
 
 ## Styling
 
 - Plain CSS (Vite template). Inline SVG + CSS animations for scenes, a small
   canvas layer for particles, GSAP only if needed
-- Design tokens as CSS custom properties
-  > TODO: token file location and naming once Phase 2 starts
+- Design tokens as CSS custom properties in `frontend/src/index.css` `:root`; scene
+  sky, light, and land variables in `frontend/src/scenes/scenes.css`
+- Fonts are self-hosted through `@fontsource` packages; no third-party font CDN
 
 ## Naming
 

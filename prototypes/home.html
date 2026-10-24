@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harvest Tracker - Home (mockup)</title>
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="mockup.css" />
+</head>
+<body data-season="fall">
+  <div class="page">
+    <header class="plank">
+      <a class="brand" href="home.html">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 6 C44 10 46 30 40 52 L32 58 L24 52 C18 30 20 10 32 6Z" fill="#e9c24a" />
+          <g stroke="#c99a2a" stroke-width="1.5" opacity=".7" fill="none"><path d="M28 12 L26 52 M32 8 V56 M36 12 L38 52 M22 20 H42 M21 28 H43 M21 36 H43 M22 44 H42" /></g>
+          <path d="M24 52 C14 42 12 26 18 14 C22 30 26 42 32 58Z" fill="#5f9a3c" />
+          <path d="M40 52 C50 42 52 26 46 14 C42 30 38 42 32 58Z" fill="#4a8530" />
+        </svg>
+        Harvest Tracker
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a class="btn" href="home.html" aria-current="page">Home</a></li>
+          <li><a class="btn" href="scenes.html">Scenes</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Fall scene, 1600 x 900. Combine at 60% harvested, working right to left into standing corn. -->
+    <div class="scene-frame">
+      <svg class="scene" id="scene" data-season="fall" data-time="day" viewBox="0 0 1600 900" aria-hidden="true">
+        <!-- sky: gradient and sun glow come from CSS -->
+        <g class="only-night"><g data-art="stars"></g><g data-art="moon" transform="translate(1265 160)"></g></g>
+        <circle class="only-day" cx="320" cy="190" r="52" fill="#fff6d6" />
+        <circle class="only-dusk" cx="300" cy="490" r="85" fill="#ffb766" />
+        <g class="clouds not-night"><g class="glide">
+          <g data-art="cloud" transform="translate(620 130)"></g>
+          <g data-art="cloud" transform="translate(1040 230) scale(.7)"></g>
+          <g data-art="cloud" transform="translate(180 300) scale(.55)"></g>
+        </g></g>
+
+        <g class="land">
+          <path d="M0 470 C200 430 380 455 560 440 C760 422 960 455 1160 432 C1340 412 1480 440 1600 430 L1600 620 L0 620 Z" fill="var(--hill-far)" />
+          <path d="M0 540 C180 505 360 530 540 515 C720 500 900 530 1080 512 C1260 495 1420 520 1600 505 L1600 620 L0 620 Z" fill="var(--hill-mid)" />
+
+          <g data-art="tree" transform="translate(40 545) scale(.55)" style="--leaf: var(--leaf-a)"></g>
+          <g data-art="tree" transform="translate(110 540) scale(.7)" style="--leaf: var(--leaf-b)"></g>
+          <g data-art="tree" transform="translate(180 545) scale(.6)" style="--leaf: var(--leaf-c)"></g>
+          <g data-art="tree" transform="translate(255 535) scale(.75)" style="--leaf: var(--leaf-a)"></g>
+          <g data-art="tree" transform="translate(335 542) scale(.6)" style="--leaf: var(--leaf-b)"></g>
+          <g data-art="tree" transform="translate(405 536) scale(.7)" style="--leaf: var(--leaf-c)"></g>
+          <g data-art="tree" transform="translate(485 532) scale(.65)" style="--leaf: var(--leaf-a)"></g>
+          <g data-art="tree" transform="translate(565 528) scale(.8)" style="--leaf: var(--leaf-b)"></g>
+          <g data-art="tree" transform="translate(645 534) scale(.6)" style="--leaf: var(--leaf-c)"></g>
+          <g data-art="tree" transform="translate(725 526) scale(.75)" style="--leaf: var(--leaf-a)"></g>
+          <g data-art="tree" transform="translate(805 532) scale(.65)" style="--leaf: var(--leaf-b)"></g>
+          <g data-art="tree" transform="translate(885 528) scale(.7)" style="--leaf: var(--leaf-c)"></g>
+          <g data-art="tree" transform="translate(965 534) scale(.6)" style="--leaf: var(--leaf-a)"></g>
+          <g data-art="tree" transform="translate(1045 522) scale(.75)" style="--leaf: var(--leaf-b)"></g>
+          <g data-art="tree" transform="translate(1115 528) scale(.65)" style="--leaf: var(--leaf-c)"></g>
+          <g data-art="tree" transform="translate(1520 520) scale(.75)" style="--leaf: var(--leaf-a)"></g>
+          <g data-art="tree" transform="translate(1585 528) scale(.6)" style="--leaf: var(--leaf-c)"></g>
+
+          <ellipse cx="1310" cy="600" rx="220" ry="14" fill="#000" opacity=".15" />
+          <g data-art="farmstead" transform="translate(1250 600) scale(.8)"></g>
+
+          <path d="M0 590 C300 575 700 585 1000 578 C1250 572 1450 580 1600 576 L1600 900 L0 900 Z" fill="var(--ground)" />
+          <g fill="none" stroke="var(--ground-row)" stroke-linecap="round">
+            <path d="M0 615 Q800 605 1600 610" stroke-width="2" stroke-dasharray="3 7" />
+            <path d="M0 640 Q800 630 1600 636" stroke-width="2.5" stroke-dasharray="4 8" />
+            <path d="M0 670 Q800 660 1600 666" stroke-width="3" stroke-dasharray="5 9" />
+            <path d="M0 708 Q800 698 1600 704" stroke-width="4" stroke-dasharray="6 11" />
+            <path d="M0 755 Q800 745 1600 751" stroke-width="5" stroke-dasharray="7 12" />
+            <path d="M0 812 Q800 802 1600 808" stroke-width="6" stroke-dasharray="8 14" />
+            <path d="M0 878 Q800 868 1600 874" stroke-width="8" stroke-dasharray="10 16" />
+          </g>
+          <rect y="770" width="1600" height="130" fill="#000" opacity=".07" />
+
+          <!-- standing corn: the 40% not yet picked -->
+          <g transform="translate(0 586)" style="filter: brightness(.72)">
+            <rect y="28" width="640" height="102" fill="#9a7a32" />
+            <rect width="640" height="130" fill="url(#corn-fall)" />
+          </g>
+          <g transform="translate(-9 604) scale(1.1)">
+            <rect y="30" width="570" height="100" fill="#8a6c2a" opacity=".6" />
+            <rect width="570" height="130" fill="url(#corn-fall)" />
+          </g>
+
+          <!-- stalks at the corn edge get pulled into the header -->
+          <g>
+            <g class="cut"><g data-art="stalk" transform="translate(612 738) scale(1.1)"></g></g>
+            <g class="cut"><g data-art="stalk" transform="translate(628 734) scale(1.05)"></g></g>
+            <g class="cut"><g data-art="stalk" transform="translate(644 738) scale(1.1)"></g></g>
+            <g class="cut"><g data-art="stalk" transform="translate(658 732) scale(1.0)"></g></g>
+          </g>
+
+          <g class="creep"><g class="rock" style="transform-origin: 1037px 740px">
+            <g class="dust-trail">
+              <circle class="dust" cx="1090" cy="700" r="12" fill="#e2c98f" />
+              <circle class="dust" cx="1090" cy="700" r="12" fill="#e2c98f" />
+              <circle class="dust" cx="1090" cy="700" r="12" fill="#e2c98f" />
+            </g>
+            <g>
+              <rect class="chaff" x="1084" y="690" width="10" height="2" fill="#d9b866" />
+              <rect class="chaff" x="1086" y="698" width="8" height="2" fill="#c9a24c" />
+              <rect class="chaff" x="1082" y="706" width="9" height="2" fill="#e2c98f" />
+            </g>
+            <g data-art="combine" transform="translate(900 740) scale(1.05)"></g>
+          </g></g>
+          <!-- stubble in front of the wheels so they sit in the field -->
+          <g data-art="stubbleStrip" transform="translate(600 746)"></g>
+
+          <!-- unloading: pipe swings out and grain pours into the cart -->
+          <g class="unload">
+            <path d="M1022 528 L1004 474 L950 596 L946 612" fill="none" stroke="#173d12" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M1022 528 L1004 474 L950 596 L946 612" fill="none" stroke="#3f8a31" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+            <g fill="#e2b84a">
+              <rect class="stream" x="940" y="614" width="12" height="26" rx="5" />
+              <rect class="stream" x="940" y="614" width="12" height="26" rx="5" />
+              <rect class="stream" x="940" y="614" width="12" height="26" rx="5" />
+            </g>
+          </g>
+
+          <g stroke="#6b4a2c" stroke-width="2">
+            <line x1="1180" y1="770" x2="1600" y2="782" /><line x1="1180" y1="790" x2="1600" y2="805" />
+          </g>
+          <g fill="#7a5532">
+            <rect x="1180" y="752" width="10" height="56" /><rect x="1270" y="754" width="11" height="60" />
+            <rect x="1365" y="756" width="12" height="64" /><rect x="1465" y="758" width="13" height="68" /><rect x="1570" y="760" width="14" height="72" />
+          </g>
+          <!-- grain cart: arrives from the right, takes the grain, drives off left -->
+          <g class="cart-run"><g transform="translate(590 852)">
+            <g data-art="tractorBody"></g>
+            <g data-art="grainCart"></g>
+          </g></g>
+          <g data-art="farmer" transform="translate(1415 845) scale(1.5)"></g>
+
+          <g>
+            <g class="fall-leaf"><path transform="translate(380 260)" d="M0 0 Q8 -8 16 0 Q8 8 0 0Z" fill="#d9661f" /></g>
+            <g class="fall-leaf"><path transform="translate(760 320)" d="M0 0 Q8 -8 16 0 Q8 8 0 0Z" fill="#e0a33a" /></g>
+            <g class="fall-leaf"><path transform="translate(1180 240)" d="M0 0 Q8 -8 16 0 Q8 8 0 0Z" fill="#b23a1f" /></g>
+            <g class="fall-leaf"><path transform="translate(560 200)" d="M0 0 Q8 -8 16 0 Q8 8 0 0Z" fill="#d9661f" /></g>
+          </g>
+        </g>
+
+        <g class="geese not-night"><g transform="translate(900 170) scale(.9)">
+          <g data-art="goose" transform="translate(0 0)"></g>
+          <g data-art="goose" transform="translate(48 -22)"></g>
+          <g data-art="goose" transform="translate(96 -44)"></g>
+          <g data-art="goose" transform="translate(144 -66)"></g>
+          <g data-art="goose" transform="translate(48 22)"></g>
+          <g data-art="goose" transform="translate(96 44)"></g>
+          <g data-art="goose" transform="translate(144 66)"></g>
+        </g></g>
+
+        <!-- night lights sit above the darkened land so they glow -->
+        <g class="only-night">
+          <g data-art="farmLights" transform="translate(1250 600) scale(.8)"></g>
+          <g class="creep"><g class="rock" style="transform-origin: 1037px 740px">
+            <g data-art="combineLights" transform="translate(900 740) scale(1.05)"></g>
+          </g></g>
+        </g>
+      </svg>
+      <span class="plaque">Iowa &middot; Fall &middot; Week of Oct 19</span>
+    </div>
+
+    <div class="controls" role="group" aria-label="Preview time of day">
+      <span class="display">Preview:</span>
+      <button class="btn" type="button" data-time="day" aria-pressed="true">Day</button>
+      <button class="btn" type="button" data-time="dusk" aria-pressed="false">Dusk</button>
+      <button class="btn" type="button" data-time="night" aria-pressed="false">Night</button>
+    </div>
+    <div class="controls controls--tight" role="group" aria-label="Preview page color">
+      <span class="display">Page color:</span>
+      <button class="btn" type="button" data-bg="spring" aria-pressed="false">Spring</button>
+      <button class="btn" type="button" data-bg="summer" aria-pressed="false">Summer</button>
+      <button class="btn" type="button" data-bg="fall" aria-pressed="true">Fall</button>
+      <button class="btn" type="button" data-bg="winter" aria-pressed="false">Winter</button>
+    </div>
+
+    <h1>It's fall in Iowa!</h1>
+
+    <section class="cards" aria-label="This week">
+      <article class="card fact">
+        <h2 class="card__title">Corn</h2>
+        <svg class="fact__icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 6 C44 10 46 30 40 52 L32 58 L24 52 C18 30 20 10 32 6Z" fill="#e9c24a" />
+          <g stroke="#c99a2a" stroke-width="1.5" opacity=".7" fill="none"><path d="M28 12 L26 52 M32 8 V56 M36 12 L38 52 M22 20 H42 M21 28 H43 M21 36 H43 M22 44 H42" /></g>
+          <path d="M24 52 C14 42 12 26 18 14 C22 30 26 42 32 58Z" fill="#5f9a3c" />
+          <path d="M40 52 C50 42 52 26 46 14 C42 30 38 42 32 58Z" fill="#4a8530" />
+        </svg>
+        <div>
+          <p class="fact__big">78% picked</p>
+          <p class="fact__note fact__note--good">More than last year!</p>
+        </div>
+        <div class="fact__bar">
+          <div class="bar"><div class="bar__fill" style="width:78%"></div><div class="bar__mark" style="left:65%"></div></div>
+          <p class="bar__legend">The dark line is last year: 65%</p>
+        </div>
+      </article>
+
+      <article class="card fact">
+        <h2 class="card__title">Soybeans</h2>
+        <svg class="fact__icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M14 46 C10 30 24 14 44 12 C54 12 56 20 50 26 C40 34 34 44 22 52 C18 54 15 51 14 46Z" fill="#c8a868" />
+          <g fill="#e3cf94"><circle cx="22" cy="42" r="6" /><circle cx="32" cy="31" r="6" /><circle cx="43" cy="21" r="5.5" /></g>
+          <path d="M14 46 C10 30 24 14 44 12" fill="none" stroke="#9a7a3e" stroke-width="2" />
+          <path d="M50 38 C60 34 62 50 53 56 C46 58 44 48 50 38Z" fill="#5f9a3c" />
+        </svg>
+        <div>
+          <p class="fact__big">91% picked</p>
+          <p class="fact__note">About the same as last year.</p>
+        </div>
+        <div class="fact__bar">
+          <div class="bar"><div class="bar__fill" style="width:91%"></div><div class="bar__mark" style="left:89%"></div></div>
+          <p class="bar__legend">The dark line is last year: 89%</p>
+        </div>
+      </article>
+
+      <article class="card fact">
+        <h2 class="card__title">Sunlight</h2>
+        <svg class="fact__icon" viewBox="0 0 64 64" aria-hidden="true">
+          <g stroke="#e0912a" stroke-width="3" stroke-linecap="round"><line x1="32" y1="10" x2="32" y2="18" /><line x1="13" y1="21" x2="18" y2="26" /><line x1="51" y1="21" x2="46" y2="26" /><line x1="6" y1="38" x2="13" y2="38" /><line x1="51" y1="38" x2="58" y2="38" /></g>
+          <path d="M14 42 A18 18 0 0 1 50 42 Z" fill="#f2b33d" />
+          <rect x="6" y="42" width="52" height="4" rx="2" fill="#a0612a" />
+          <path d="M14 51 H50 M21 57 H43" stroke="#c98a3a" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <div>
+          <p class="fact__big">Sunset 6:12 PM</p>
+          <p class="fact__note">Days are getting shorter. 10 hours 58 minutes of sun today.</p>
+        </div>
+      </article>
+    </section>
+
+    <p class="status">Des Moines, Iowa &middot; Week ending Oct 19 &middot; Updated Tuesday</p>
+  </div>
+
+  <script src="art.js"></script>
+  <script>
+    // Mockup-only: time-of-day preview toggle (also reads ?time=)
+    const bgButtons = document.querySelectorAll('[data-bg]')
+    bgButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.body.dataset.season = btn.dataset.bg
+        bgButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)))
+      })
+    })
+    const buttons = document.querySelectorAll('[data-time]:not(svg)')
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.getElementById('scene').dataset.time = btn.dataset.time
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)))
+      })
+    })
+    const params = new URLSearchParams(location.search)
+    ;[...bgButtons].find((b) => b.dataset.bg === params.get('bg'))?.click()
+    const time = params.get('time')
+    ;[...buttons].find((b) => b.dataset.time === time)?.click()
+  </script>
+</body>
+</html>

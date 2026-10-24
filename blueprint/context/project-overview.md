@@ -1,6 +1,6 @@
 # Harvest Season Tracker - Project Overview
 
-<!-- blueprint:source-hash 59b3e2e1df766a25c4b1f665f6a5c5b34a33b437127082997caff774333b1ea0 -->
+<!-- blueprint:source-hash 53b28ed111ad477cdf6e66336660e746b492b2cf413067901c2a45f11fe5936a -->
 
 > Homeschool learning site for kids 6 to 10 that shows Iowa's harvest live, in pictures: animated season scenes driven by real USDA, NOAA, and NWS data.
 
@@ -29,8 +29,8 @@ Build-plan order (IDs are stable, so the list is not numeric). Milestone 1 is th
 
 **Milestone 1: Live harvest slice**
 - **1. Ingest foundation** - D1 REST client, `ingest_run` logging, `raw_payload` storage; done when a real Quick Stats response is saved from a GitHub Actions run.
-- **4. App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page.
-- **5. Fall scene** - combine position = percent harvested; leaves, geese, harvest moon; animated fall logo/loader; reduced-motion fallback.
+- **4. App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page; ports the frontier-journal theme and illustrated scene art kit from `prototypes/`.
+- **5. Fall scene** - combine works the corn edge (edge = percent harvested); grain cart unloading cycle; leaves, geese, harvest moon; animated fall logo/loader; reduced-motion fallback.
 - **2. Crop progress ingest** - Iowa corn and soybean weekly progress, multi-year backfill, idempotent upserts.
 - **3. Progress API** - `/api/crops`, `/api/crops/{slug}/progress` (with last-year and 5-year-average comparison), `/api/health` (last successful ingest per source).
 - **6. Day and night sky** - day, dusk, night palettes from Des Moines sunrise/sunset computed with `astral` and served by the API.
@@ -134,16 +134,27 @@ None. Family homeschool project; stay in free tiers. Revisit Workers Paid only i
 
 ## UI/UX
 
-- The UI is the main attraction: each season has its own small animated scene that restyles the whole site. Reference feel: the charming idle loop of the Claude Code animated icon (reference image goes in `docs/reference/`).
-- Home: big season scene, then 2 to 3 picture fact cards (e.g. "Corn: 78% picked. More than last year!"). Minimal navigation.
-- Crop page per crop: progress chart vs last year and average; replay slider later.
-- Scene list page plus dev overrides such as `?season=fall&time=dusk&progress=60`.
-- Data bindings: combine = percent harvested, corn height = GDD, sky = sunrise/sunset, weather overlays = forecast, frost sparkle = frost data.
-- Kid-first copy ("picked" alongside "harvested"); every number has a picture partner.
-- A few tappable elements (birds fly off, tractor wiggles). No audio by default.
-- Honor `prefers-reduced-motion`, pause when tab hidden, cap particles, scenes `aria-hidden`.
+- The UI is the main attraction: each season has its own animated scene that restyles the whole site.
+- **Look:** frontier journal inspired by 1990s Oregon Trail (never copied). Parchment cards on a muted season-colored page (sage spring, wheat summer, rust fall, slate winter), wooden plank header, brass buttons, ink-brown text.
+- **Fonts (self-hosted):** Rye for titles, labels, buttons; Atkinson Hyperlegible for anything kids read.
+- **Scenes:** layered smooth vector illustration, not pixel art. Gradient sky with sun glow, hazy far hills, detailed tree line, perspective field rows, soft shadows. Figures detailed but friendly; machines green and yellow, no brand marks.
+- **Light:** day, dusk, night relight the whole scene through shared light settings; barn windows and machine lights glow at night.
+- **Motion:** smooth and gentle. Machines work in place: combine at the corn edge (stalks fall into the header, tank fills); grain cart tractor pulls alongside, unloads, drives off. Turns happen off-screen; no visible flips.
+- **Design reference:** `prototypes/` (`theme.css`, `home.html`, `scenes.html`, `art.js`) until Feature 4 ports theme and art into the app.
 
-> TODO: frontend route paths (home, crop page, scene list) are undecided; decide when Feature 1 starts, before Feature 4.
+### Routes
+
+| Path | Page | Built in |
+|---|---|---|
+| `/` | Home: big season scene, then 2 to 3 picture fact cards (e.g. "Corn: 78% picked. More than last year!") | 4 (cards in 7) |
+| `/scenes` | Scene list, linked in the navigation | 4 |
+| `/crops/:slug` | Crop page: progress chart vs last year and average; replay slider later | 7 |
+
+- Dev overrides on every page: `?season=fall&time=dusk&progress=60`.
+- Data bindings: corn edge = percent harvested, corn height = GDD, sky = sunrise/sunset, weather overlays = forecast, frost sparkle = frost data.
+- Kid-first copy ("picked" alongside "harvested"); every number has a picture partner. Minimal navigation.
+- A few tappable elements (birds fly off, tractor wiggles). No audio by default.
+- Honor `prefers-reduced-motion`, pause when tab hidden, cap particles, scenes `aria-hidden`. Laptop first, responsive to phone.
 
 ## Deployment
 
@@ -161,7 +172,6 @@ None. Family homeschool project; stay in free tiers. Revisit Workers Paid only i
 > Tracked as TODOs on the build-plan feature that needs them. Resolve in the plans, then re-run `/overview`.
 
 - Feature 1 (done) still lists TODOs for NASS key, D1 write limits, and `database_id`. All three are resolved (see `blueprint/history/features/01-ingest-foundation.md`); the notes can be removed from the plan.
-- Feature 4 (next): frontend route paths (home, crop page, scene list) are undecided; the TODO sits under Feature 1 in the plan.
 - Feature 2: Quick Stats query parameters for Iowa corn and soybean progress.
 - Feature 8: Python Worker CPU time vs the free 10 ms limit, GitHub pausing scheduled workflows, domain.
 - Feature 11: snap bean baseline source.
