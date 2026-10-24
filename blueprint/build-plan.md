@@ -8,9 +8,8 @@ Features in rough build order. Details come later in `/feature`.
   - TODO: get a NASS Quick Stats API key (until then, build against a saved sample response)
   - TODO: confirm D1 REST write limits and batch size
   - TODO: fill `database_id` in `backend/wrangler.jsonc`
-  - TODO: decide frontend route paths (home, crop page, scene list) before Feature 4
-- [ ] 4. **App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page
-- [ ] 5. **Fall scene** - combine driven by percent harvested, leaves, geese, harvest moon, animated fall logo/loader, reduced-motion fallback
+- [x] 4. **App shell and season engine** - season resolver, theme registry with default fallback scene, dev URL overrides, scene list page, frontier-journal theme and illustrated scene art kit from `prototypes/`
+- [ ] 5. **Fall scene** - combine working the corn edge (edge = percent harvested), grain cart unloading cycle, leaves, geese, harvest moon, animated fall logo/loader, reduced-motion fallback
 - [ ] 2. **Crop progress ingest** - Iowa corn and soybean weekly progress with multi-year backfill and idempotent upserts
   - TODO: confirm Quick Stats query parameters for Iowa corn and soybean progress
 - [ ] 3. **Progress API** - `/api/crops`, `/api/crops/{slug}/progress` with last-year and 5-year-average comparison, `/api/health` with last ingest

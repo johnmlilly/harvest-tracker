@@ -55,18 +55,18 @@ data/      seed/ (usual dates CSVs, crop stages)
 ## UI and season scenes
 The UI is the main attraction. Each season gets its own small, unique animated scene that changes the look and feel of the whole site, and the set of scenes can grow over time.
 
-Reference: the animated Claude Code icon/logo shown before a cloud session starts (small, simple, charming idle loop). The exact look is not captured yet; match it from a screenshot or GIF in `docs/reference/` when available.
+Look (decided Oct 2026): a frontier journal inspired by 1990s Oregon Trail, with layered, smooth vector scenes (not pixel art). See `blueprint/project-plan.md` section 7 and the mockups in `prototypes/`.
 
 **Seasons:** four calendar seasons using meteorological dates (Mar 1, Jun 1, Sep 1, Dec 1) in the location's timezone. Configurable in one place.
 
 **Starter scene ideas (one signature animation each):**
 - Spring: a tiny tractor crosses the field planting; seedlings pop up row by row; rain showers; birds return.
 - Summer: corn grows taller as accumulated GDD rises; fireflies appear after sunset; heat shimmer; bean plants flower.
-- Fall: a combine works through the rows as % harvested rises; falling leaves; geese in a V; harvest moon at night; frost sparkle after first frost.
+- Fall: a combine works the corn edge (the edge moves as % harvested rises) while a grain cart pulls alongside to unload; falling leaves; geese in a V; harvest moon at night; frost sparkle after first frost.
 - Winter: snowfall; quiet field under stars; glowing grain bin; countdown to spring planting.
 
 **Data-driven where possible:**
-- Combine progress = `crop_progress` % harvested
+- Corn edge (where the combine works) = `crop_progress` % harvested
 - Corn height = accumulated GDD / `maturity_gdd`
 - Day, dusk, and night palettes from computed sunrise/sunset
 - Rain/snow overlay from the NWS forecast

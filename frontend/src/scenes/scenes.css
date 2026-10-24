@@ -1,0 +1,126 @@
+/* Scene kit: sky, light, and land colors by season and time of day, plus shared motion. */
+
+svg.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.4);
+  background:
+    radial-gradient(circle at var(--sun-x) var(--sun-y), var(--glow) 0, transparent var(--glow-r)),
+    linear-gradient(var(--sky-top), var(--sky-mid) 40%, var(--sky-horizon) 62%);
+
+  --sky-top: #4f8fd6;
+  --sky-mid: #8dbde8;
+  --sky-horizon: #dcecf4;
+  --sun-x: 20%;
+  --sun-y: 21%;
+  --glow: rgb(255 244 200 / 0.85);
+  --glow-r: 22%;
+
+  --hill-far: #a6b8b2;
+  --hill-mid: #7fa65a;
+  --ground: #7a5434;
+  --ground-row: #5e3f26;
+  --leaf-a: #6faa4c;
+  --leaf-b: #5a9640;
+  --leaf-c: #86bd5e;
+}
+
+svg.scene[data-season='summer'] {
+  --hill-mid: #5f8f45;
+  --ground: #6e4f30;
+  --leaf-a: #4f8a3a;
+  --leaf-b: #3f7a32;
+  --leaf-c: #5f9a44;
+}
+
+svg.scene[data-season='fall'] {
+  --hill-far: #a3b1ad;
+  --hill-mid: #8a8f55;
+  --ground: #c8a46a;
+  --ground-row: #a07a42;
+  --leaf-a: #c8541e;
+  --leaf-b: #e0a33a;
+  --leaf-c: #b23a1f;
+}
+
+svg.scene[data-season='winter'] {
+  --hill-far: #c9d3dd;
+  --hill-mid: #e3e9f0;
+  --ground: #eef2f6;
+  --ground-row: #d3dce6;
+  --leaf-a: #3f6650;
+  --leaf-b: #345a45;
+  --leaf-c: #4a7259;
+}
+
+svg.scene[data-time='dusk'] {
+  --sky-top: #3b3f7a;
+  --sky-mid: #c7698a;
+  --sky-horizon: #f6a85e;
+  --sun-x: 19%;
+  --sun-y: 54%;
+  --glow: rgb(255 170 90 / 0.9);
+  --glow-r: 45%;
+}
+
+svg.scene[data-time='night'] {
+  --sky-top: #060a22;
+  --sky-mid: #111c42;
+  --sky-horizon: #24345c;
+  --sun-x: 79%;
+  --sun-y: 18%;
+  --glow: rgb(220 230 255 / 0.35);
+  --glow-r: 14%;
+}
+
+svg.scene[data-time='dusk'] .scene__land,
+svg.scene[data-time='dusk'] .scene-clouds {
+  filter: url(#scene-light-dusk);
+}
+
+svg.scene[data-time='night'] .scene__land {
+  filter: url(#scene-light-night);
+}
+
+/* Smooth, gentle motion */
+.scene-glide {
+  animation: scene-glide 60s ease-in-out infinite alternate;
+}
+
+.scene-twinkle {
+  animation: scene-twinkle 3s ease-in-out infinite alternate;
+}
+
+.scene-twinkle:nth-child(3n) {
+  animation-delay: -1s;
+}
+
+.scene-twinkle:nth-child(3n + 1) {
+  animation-delay: -2s;
+}
+
+@keyframes scene-glide {
+  to {
+    transform: translateX(160px);
+  }
+}
+
+@keyframes scene-twinkle {
+  to {
+    opacity: 0.35;
+  }
+}
+
+/* Pause while the tab is hidden; stay still for reduced motion */
+.shell[data-paused] svg.scene * {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  svg.scene * {
+    animation: none !important;
+  }
+}

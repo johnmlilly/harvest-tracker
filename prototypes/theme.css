@@ -1,0 +1,123 @@
+/* Harvest Tracker theme - frontier journal with layered illustrated scenes, inspired by Oregon Trail.
+   Durable output of /prototype: port these variables into frontend/src/index.css. */
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Rye&display=swap');
+
+:root {
+  /* surfaces: parchment cards on a muted season color (body[data-season] picks one) */
+  --bg-spring: #5f7f50;
+  --bg-summer: #8e6a24;
+  --bg-fall: #8a4a2a;
+  --bg-winter: #4a5a6a;
+  --bg: var(--bg-fall);
+  --wood: #6b4527;
+  --wood-dark: #4a2f1a;
+  --wood-light: #8a5c35;
+  --paper: #f3e6c8;
+  --paper-edge: #e2cb98;
+  --paper-line: #c9ad78;
+
+  /* text */
+  --ink: #3b2a1a;
+  --ink-soft: #6b5338;
+  --ink-faint: #9a8462;
+  --on-wood: #f6ead0;
+
+  /* accent: brass */
+  --brass: #b8893a;
+  --brass-light: #e6c272;
+  --brass-dark: #7a5a22;
+  --accent-ink: #2e1f10;
+  --focus: #f0c75e;
+
+  /* component states */
+  --good: #3f7a3a;
+  --bar-track: #e0cb9c;
+  --bar-fill: #d4a038;
+  --bar-fill-dark: #a87a24;
+  --bar-marker: var(--ink);
+  --shadow: 0 6px 16px rgb(0 0 0 / 0.45);
+
+  /* type: western slab for titles and labels, readable font for sentences */
+  --font-display: 'Rye', 'Rockwell', serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --text-sm: 0.875rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2.25rem;
+
+  /* scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --radius: 4px;
+  --tap: 44px;
+}
+
+body[data-season='spring'] { --bg: var(--bg-spring); }
+body[data-season='summer'] { --bg: var(--bg-summer); }
+body[data-season='fall'] { --bg: var(--bg-fall); }
+body[data-season='winter'] { --bg: var(--bg-winter); }
+
+/* Scene light and land colors. Scenes set data-season and data-time; drawings read these. */
+.scene {
+  --sky-top: #4f8fd6;
+  --sky-mid: #8dbde8;
+  --sky-horizon: #dcecf4;
+  --sun-x: 20%;
+  --sun-y: 21%;
+  --glow: rgb(255 244 200 / 0.85);
+  --glow-r: 22%;
+
+  --hill-far: #a6b8b2;
+  --hill-mid: #7fa65a;
+  --ground: #7a5434;
+  --ground-row: #5e3f26;
+  --leaf-a: #6faa4c;
+  --leaf-b: #5a9640;
+  --leaf-c: #86bd5e;
+}
+.scene[data-season='summer'] {
+  --hill-mid: #5f8f45;
+  --ground: #6e4f30;
+  --leaf-a: #4f8a3a;
+  --leaf-b: #3f7a32;
+  --leaf-c: #5f9a44;
+}
+.scene[data-season='fall'] {
+  --hill-far: #a3b1ad;
+  --hill-mid: #8a8f55;
+  --ground: #c8a46a;
+  --ground-row: #a07a42;
+  --leaf-a: #c8541e;
+  --leaf-b: #e0a33a;
+  --leaf-c: #b23a1f;
+}
+.scene[data-season='winter'] {
+  --hill-far: #c9d3dd;
+  --hill-mid: #e3e9f0;
+  --ground: #eef2f6;
+  --ground-row: #d3dce6;
+  --leaf-a: #3f6650;
+  --leaf-b: #345a45;
+  --leaf-c: #4a7259;
+}
+.scene[data-time='dusk'] {
+  --sky-top: #3b3f7a;
+  --sky-mid: #c7698a;
+  --sky-horizon: #f6a85e;
+  --sun-x: 19%;
+  --sun-y: 54%;
+  --glow: rgb(255 170 90 / 0.9);
+  --glow-r: 45%;
+}
+.scene[data-time='night'] {
+  --sky-top: #060a22;
+  --sky-mid: #111c42;
+  --sky-horizon: #24345c;
+  --sun-x: 79%;
+  --sun-y: 18%;
+  --glow: rgb(220 230 255 / 0.35);
+  --glow-r: 14%;
+}
